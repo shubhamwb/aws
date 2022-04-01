@@ -1,0 +1,14 @@
+create instance Templates
+
+it gives structure of instnace
+it help when you have to create more instnace of same configuration
+
+step 1 :- LHS Dashboard --> Instances
+step 2 :- Launch Templates
+step 3 :- Create Launch Templates
+			--> Enter name for templates
+			--> select machine
+			--> select instnace type
+			--> select key pair
+			--> configure storage
+			--> create Launch Templates
