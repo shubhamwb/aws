@@ -1,0 +1,37 @@
+Host html page at launch instance
+
+create instance :-
+	step 1 :- ec2 --> launch instance	
+	step 2 :- select AMI
+	step 3 :- select Instance type (t2.micro)
+	step 4 :- Configure Instance Details
+				--> Advanced Details
+				--> Add
+					#!/bin/bash
+					yum update all
+					yum install httpd -y
+					systemctl start httpd
+					systemctl enable httpd
+					echo "hello cloudblitz " >> /var/www/html/index.html
+	step 5 :- Configure security group
+				--> Add rule 
+				--> type select http
+				--> source select anywhere
+				
+	step 6 :- launch instance
+
+Assign Elastic IP :- 
+	why ? --> it allocate because when you stop instance it remove public ip and when you 
+	start that instance it will change the public ip , so that's problem recover you need 
+	to assign Elastic IP 
+
+	step 1 :- left side pannel --> Network & Security
+	step 2 :- Select Elastic IP
+	step 3 :- Allocate Elastic IP address
+	step 4 :- Allocate
+	step 5 :- Elastic IP address dashboard
+	step 6 :- select Elastic IP 
+				-->Actions
+				-->Associate Elastic IP address
+				--> Instance --> select Instance
+				-->Associate
