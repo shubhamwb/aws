@@ -1,0 +1,13 @@
+launch AMI Image
+
+
+you can lauch instance with the help of AMI Image 
+it specify machine 
+it skip only 1 step of lauch process
+step 1 :- launch 1 instance
+step 2 :- select this instance 
+			--> Actions
+			--> Image And Templates
+			--> Create Image
+			--> Enter Image Name
+			--> create Image
