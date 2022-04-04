@@ -1,0 +1,7 @@
+ping 2 machine 
+
+while lauching instance add ALL ICMP ipv4 in security group
+
+or 
+ 
+ edit security group and add ALL ICMP ipv4 in it
