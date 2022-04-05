@@ -1,0 +1,28 @@
+Application Load Balancer
+
+it transfer traffic according to device type
+ex. mobile user ---> mobile group ---> mobile instance
+	laptop user ---> laptop group ---> laptop instance
+
+steps :-
+	1. create 2 instance with http security group of mobile,laptop and tab respe.
+	2. create target group
+		--> create target group
+			--> choose instance type --> instance
+			--> assign name			 --> laptop-tg
+			--> assign check path	 --> /index.html
+			--> select instance 	 --> laptop-1 laptop-2
+			--> create target group
+	3. repeat step 2 for another group
+	4. create load balancer
+		--> load balancer --> create load balancer
+		--> select application load balancer
+		--> assign name of load balancer
+		--> select all availability zone
+		--> select security group
+		--> listener --> default action -->select target group
+		--> create load balancer
+	5. select load balancer 
+		--> listeners
+		--> edit rules
+		--> add target group
