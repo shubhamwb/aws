@@ -1,0 +1,15 @@
+Classic load balancer
+
+it helps to distribute the incoming traffic with instances
+
+steps 
+	1. create 2 and more instance with html page and security group http
+	2. load balance --> select classic load balance 
+		--> assign name
+		--> Enable advance vpc configuration
+		--> select 2 subnet (availability zone)
+		--> assign security group
+		--> configure heath check
+		--> add instances 
+		--> add tags
+		--> create
