@@ -1,0 +1,31 @@
+static website hosting 
+
+step 1 :- create bucket
+			-- object ownership
+				-- ACLs Enabled
+			-- Block all public access
+				-- unmark
+			-- Bucket versioning
+				-- enable
+			-- create bucket
+step 2 :- select page
+			-- upload html pages
+			-- permissions
+				-- Access Control List (ACL) edit
+					-- everyone (public access)
+						List Read enable
+step 3 :- properties 
+			-- static website hosting 
+				-- enable
+				-- index document 
+					index.html
+				-- error document
+					error.html
+step 4 :- Objects 
+			-- select all pages	
+			-- Actions 
+				-- make public access using ACL
+				-- make public
+step 5 :- properties
+			-- static website hosting 
+			-- use URL
