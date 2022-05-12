@@ -1,0 +1,63 @@
+Recover launch instance key pair
+
+it help when ypou lost instance key to recover
+
+suppose launch instance details
+	machine = amazon linux   (instance1)
+	key pair name = key1
+	availability zone = us-east-1b
+	
+then
+
+first create instance of following configuration (same as launch instance)
+	machine = amazon linux (same as launch instance) (instance2)
+	key pair = recover-key (new key pair)
+	availability zone = us-east-1b (same as launch instance)
+	
+stop instance1
+	open instance1 vpc
+	detach instance1 vpc (vpc1)
+	
+	attach vpc1 to instance2
+		select instance2
+		path /dev/xvdf
+	
+login instance2
+	key = recover-key
+	
+	change user to root
+		$ sudo -i
+	make directory for mount
+		mkdir /mnt/temprecover
+	
+	check volume attach or not
+		lsblk
+		
+	mount directory
+		mount -t xfs -o nouuid /dev/xvdf /mnt/temprecover
+	
+	check directory mount or not
+		lsblk
+		df -hT
+	
+	see data of instance2 key data
+		cat /home/ec2-user/.ssh/autorised_key
+		
+	copy data of instance2 key data into instance1 
+		cat /home/ec2-user/.ssh/autorised_key > /mnt/temprecover/home/ec2-user/.ssh/autorised_key
+	
+	unmount directory
+		umount /mnt/temprecover
+
+stopped instance2
+	detach vpc1 from instance2
+	attach vpc1 to instance1
+		path
+			/dev/xvda
+
+start instance1
+	
+login instance1
+	private key = recover-key   (instance2 key)
+
+thats solve !!!
