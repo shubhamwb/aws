@@ -1,0 +1,5 @@
+--> create role with AmazonEC2RoleForSSM policy
+--> launch ec2 instance with (on key section select proceed without key) 
+--> attach role to the ec2-instance
+--> connect ec2-instance 
+--> start session
