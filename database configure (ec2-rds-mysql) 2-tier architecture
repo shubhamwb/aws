@@ -1,0 +1,75 @@
+database configure (ec2-rds-mysql) 2-tier architecture
+
+
+
+--> launch instance
+	--> AMI == centos 7
+	--> SG == ssh, mysql , all tcp, custom tcp tomcat 8080
+	
+--> login on mobbaxtrem username = centos
+	--> sudo -i 
+	--> yum install java vim wget -y
+	--> google --> tomcat.apache.org
+					copy tomcat 8 tar.gz link
+	--> wget paste tar.gz
+	--> unzip 
+		--> tar -xvzf apache.tomcat.tar.gz -C /mnt
+	--> cd /mnt/apache-tomcat-8.5.78/
+	--> ./bin/catalina.sh start
+	--> on google --> <instance public_ip>:8080
+	--> cd
+	--> upload 2 files  student.war and mysql-connector.jar 
+	--> cp /home/centos/student.war /mnt/apache-tomcat-8.5.78/webapps
+	--> cp /home/centos/mysql-connector.jar /mnt/apache-tomcat-8.5.78/lib
+
+--> create database in RDS
+	--> engine type === mysql
+	--> templates 	=== Free tier
+	--> DB instance identifier === tomcat-db
+	--> Master username === admin
+	--> Master password === admin12345
+	--> DB instance class === Burstable classes
+	--> security group === create new sg 
+	--> availability zone === instance zone
+	--> create
+	
+--> on mobbaxtrem
+	--> vim /mnt/apache-tomcat-8.5.78/conf/context.xml
+		paste after <context> 
+			<Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="USERNAME" password="PASSWORD" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://DB-ENDPOINT:3306/DATABASE"/>
+		
+		and replace 
+			USERNAME == admin
+			PASSWORD == admin12345
+			DB-ENDPOINT == endpoint of RDS 
+			DATABASE == student
+-->rds 
+	--> select database
+		--> select security and open it
+		--> edit inbound rule Custome to anywhere 
+	
+	--> yum install mysql -y
+	--> mysql -h <endpoint> -u admin -padmin12345 
+		--> create database <db-name>;
+		--> use <db-name>;
+		--> CREATE TABLE if not exists students(student_id INT NOT NULL AUTO_INCREMENT,
+			student_name VARCHAR(100) NOT NULL,
+			student_addr VARCHAR(100) NOT NULL,
+			student_age VARCHAR(3) NOT NULL,
+			student_qual VARCHAR(20) NOT NULL,
+			student_percent VARCHAR(10) NOT NULL,
+			student_year_passed VARCHAR(10) NOT NULL,
+			PRIMARY KEY (student_id)
+			);
+		
+
+--> open google 
+	--> <public_ip>:8080/student
+	-->  insert data	
+  
+  
+  
+file download --->  https://drive.google.com/file/d/1pTQFLw_0HtfpUOWp9lx6MuDKENmqxKTf/view?usp=drivesdk
