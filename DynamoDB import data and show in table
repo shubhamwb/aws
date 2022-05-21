@@ -1,0 +1,15 @@
+DynamoDB 
+
+task : import data and show in table
+
+--> In EC2 Service,	launch instance with ssh 
+--> assign role with permission dynamodb full access
+--> In DynamoDB Service, create table with Database table name ex. ProductCatalog.json
+	and one 1 item Name = Id , type = number
+--> Login Instance in Mobaxtream 
+	--> sudo -i
+	--> paste json file 
+	--> aws dynamodb batch-write-item --request-items file:///home/ec2-user/ProductCatlog.json --region eu-north-1
+ 
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------
+   https://drive.google.com/drive/folders/1GwKlBEnSsVqZWau-FViv8uSX77HFoVKM?usp=sharing
