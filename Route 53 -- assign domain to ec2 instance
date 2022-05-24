@@ -1,0 +1,28 @@
+route 53 
+assign domain to ec2 instance
+
+--> EC2 --> create public instance
+			public ip == 195.22.21.23
+ 
+--> Route 53 
+	--> Create hosted Zones
+		--> Domain Name == abc.ml ( freenom domain name)4
+		--> Type == Public
+		--> Create hosted Zones
+	--> select hosted zones
+		NS and SOA alredy available
+		--> create record 
+			--> Record type == A
+			--> value == Public IP of instance  (195.22.21.23)
+			--> create record
+
+--> Freenom Account
+	--> select domain 
+		--> Manage domain
+		--> Management tools 
+			--> Nameserver
+				--> use customes
+				--> paste 4 nameserver from hosted zones record
+
+--> search on google http://abc.ml
+--------------------------------------------------------------------------------------------------
