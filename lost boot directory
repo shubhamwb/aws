@@ -1,0 +1,16 @@
+how to recover boot directory of instance (instance-1)
+
+--> create another instance of same configuration (instance-2)
+--> stopped instance-1 
+--> detach volume of instance-1 
+--> attach volume-1 to instance-1 (Name -- svdf)
+--> login instance-2
+--> sudo -i
+--> mkdir -p /var/recover
+--> mount -o nouuid /dev/xvdf1 /var/recover/
+--> cp -rvf /boot /var/recover/
+--> umount /var/recover
+--> detach volume-1
+--> attach volume-1 (Name -- xvda)
+--> start instance-1
+------------------------------------------------------------
