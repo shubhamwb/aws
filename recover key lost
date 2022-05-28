@@ -20,7 +20,7 @@ stop instance1
 	
 	attach vpc1 to instance2
 		select instance2
-		path /dev/xvdf
+		path /dev/sdf
 	
 login instance2
 	key = recover-key
