@@ -1,0 +1,20 @@
+launch aws instance 
+		- port no 22 8080
+	
+login with instance
+	install java
+		yum install	java
+	download apache tomcat
+		wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.83/bin/apache-tomcat-8.5.83.tar.gz
+	extract it to /mnt
+		tar -xvzf apache.tomcat.tar.gz -C /mnt
+	download page templete
+		wget https://www.free-css.com/assets/files/free-css-templates/download/page284/mical.zip
+	unzip template
+		unzip mical.zip
+	copy template to /mnt/apache*/webapps
+		cp -R mical-html /mnt/apache-tomcat-8.5.83/webapps/
+	
+	
+go to browser 
+	ip:8080/michal-html
